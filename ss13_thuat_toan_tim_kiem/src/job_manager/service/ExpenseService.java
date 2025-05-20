@@ -1,8 +1,8 @@
-package service;
+package job_manager.service;
 
-import entity.Expense;
-import repository.ExpenseRepo;
-import repository.IExpenseRepo;
+import job_manager.entity.Expense;
+import job_manager.repository.ExpenseRepo;
+import job_manager.repository.IExpenseRepo;
 
 import java.util.List;
 

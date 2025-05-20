@@ -1,8 +1,6 @@
-package repository;
+package job_manager.repository;
 
-import entity.Expense;
-import service.ExpenseService;
-import service.IExpenseService;
+import job_manager.entity.Expense;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

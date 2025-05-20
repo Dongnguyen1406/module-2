@@ -1,4 +1,4 @@
-package controller;
+package job_manager.controller;
 
 import java.util.Scanner;
 

@@ -1,10 +1,10 @@
-package service;
+package job_manager.repository;
 
-import entity.Expense;
+import job_manager.entity.Expense;
 
 import java.util.List;
 
-public interface IExpenseService {
+public interface IExpenseRepo {
     List<Expense> getAll();
     void add(Expense expense);
     boolean isExist(int expenseCode);

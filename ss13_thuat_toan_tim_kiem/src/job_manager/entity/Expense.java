@@ -1,4 +1,4 @@
-package entity;
+package job_manager.entity;
 
 import java.time.LocalDate;
 

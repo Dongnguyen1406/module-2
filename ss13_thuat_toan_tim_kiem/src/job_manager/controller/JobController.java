@@ -1,12 +1,11 @@
-package controller;
+package job_manager.controller;
 
-import entity.Expense;
-import service.ExpenseService;
-import service.IExpenseService;
-import view.ExpenseView;
+import job_manager.entity.Expense;
+import job_manager.service.ExpenseService;
+import job_manager.service.IExpenseService;
+import job_manager.view.ExpenseView;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class JobController {
     private static final IExpenseService expenseService = new ExpenseService();

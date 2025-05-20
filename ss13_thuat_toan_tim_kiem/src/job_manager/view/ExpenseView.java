@@ -1,8 +1,8 @@
-package view;
+package job_manager.view;
 
-import entity.Expense;
-import service.ExpenseService;
-import service.IExpenseService;
+import job_manager.entity.Expense;
+import job_manager.service.ExpenseService;
+import job_manager.service.IExpenseService;
 
 import java.time.LocalDate;
 import java.util.List;
