@@ -48,8 +48,7 @@ public class FruitRepo implements IFruitRepo {
 
     @Override
     public List<Fruit> searchByName(String name) {
-        List<Fruit> result = new ArrayList<>(); 
-        List<Fruit> fruitList = getAll();
+        List<Fruit> result = new ArrayList<>();
         for (Fruit fruit1 : fruits) {
             if (fruit1.getName().toLowerCase().contains(name.toLowerCase())) {
                result.add(fruit1);
