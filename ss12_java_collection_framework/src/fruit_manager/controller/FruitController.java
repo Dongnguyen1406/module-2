@@ -50,7 +50,14 @@ public class FruitController {
                     break;  
                 case 2:
                     System.out.println("Nhập thông tin của trái cây");
-                    Fruit fruit = FruitView.inputFruitInfo();
+                    int id;
+                    do {
+                        id = FruitView.inputId();
+                        if (fruitService.isExist(id)){
+                            System.out.println("Mã trái cây đã tồn tại!");
+                        }
+                    }while (fruitService.isExist(id));
+                    Fruit fruit = FruitView.inputFruitInfo(id);
                     fruitService.add(fruit);
                     System.out.println("Thêm thành công!");
                     break;
