@@ -1,15 +1,18 @@
 package job_manager.controller;
 
 import job_manager.common.IdNotFoundException;
+import job_manager.common.UniqueIDException;
 import job_manager.entity.Expense;
 import job_manager.service.ExpenseService;
 import job_manager.service.IExpenseService;
 import job_manager.view.ExpenseView;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class JobController {
     private static final IExpenseService expenseService = new ExpenseService();
+    public static Scanner scanner = new Scanner(System.in);
     
     public static void displayJob(){
         System.out.println("Danh sách chi tiêu");
@@ -18,7 +21,22 @@ public class JobController {
     }
     
     public static void addJob(){
-        Expense expense = ExpenseView.inputExpenseInfo();
+        int expenseCode;
+        while (true) {
+            try {
+                System.out.println("Nhập mã chi tiêu: ");
+                expenseCode = Integer.parseInt(scanner.nextLine());
+                if (expenseService.isExist(expenseCode)) {
+                    throw new UniqueIDException("Mã chi tiêu đã tồn tại!");
+                }
+                break;
+            } catch (UniqueIDException e) {
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e){
+                System.out.println("Mã chi tiêu phải là số!");
+            }
+        }
+        Expense expense = ExpenseView.inputExpenseInfo(expenseCode);
         expenseService.add(expense);
         System.out.println("Thêm mới thành công!");
     }
