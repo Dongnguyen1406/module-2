@@ -11,9 +11,9 @@ public class ExpenseRepo implements IExpenseRepo{
     private static final List<Expense> expenseList = new ArrayList<>();
     
     static {
-        expenseList.add(new Expense(1, "đi chợ", LocalDate.of(2025, 5, 20), 400000.0, "mua đồ ăn"));
-        expenseList.add(new Expense(2, "trả nợ", LocalDate.of(2025, 5, 22), 400000.0, "okeoke"));
-        expenseList.add(new Expense(3, "mua sắm", LocalDate.of(2025, 5, 24), 500000.0, "quần áo"));
+        expenseList.add(new Expense(1, "a", LocalDate.of(2025, 5, 20), 400000.0, "mua đồ ăn"));
+        expenseList.add(new Expense(2, "b", LocalDate.of(2025, 5, 22), 400000.0, "okeoke"));
+        expenseList.add(new Expense(3, "c", LocalDate.of(2025, 5, 24), 500000.0, "quần áo"));
     }
     
     @Override

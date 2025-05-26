@@ -17,7 +17,14 @@ public class JobController {
     }
     
     public static void addJob(){
-        Expense expense = ExpenseView.inputExpenseInfo();
+        int expenseCode;
+        do {
+            expenseCode = ExpenseView.inputExpenseCode();
+            if (expenseService.isExist(expenseCode)){
+                System.out.println("Mã chi tiêu đã tồn tại!");
+            }
+        }while (expenseService.isExist(expenseCode));
+        Expense expense = ExpenseView.inputExpenseInfo(expenseCode);
         expenseService.add(expense);
         System.out.println("Thêm mới thành công!");
     }
