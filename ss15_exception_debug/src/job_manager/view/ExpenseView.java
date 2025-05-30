@@ -91,57 +91,16 @@ public class ExpenseView {
         }
         return expenseName;
     }
-
-    public static Expense inputExpenseInfoToUpdate(int expenseCode) {
-        String expenseName;
-        while (true) {
+    
+    public static int inputExpenseCodeToCheck(){
+        int expenseCode;
+        while (true){
             try {
-                System.out.println("Nhập tên chi tiêu: ");
-                expenseName = scanner.nextLine();
-                ExpenseValidate.validateExpenseName(expenseName);
-                break;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                expenseCode = inputExpenseCode();
+                return expenseCode;
+            }catch (NumberFormatException e){
+                System.out.println("Mã chi tiêu phải là số !");
             }
         }
-
-        LocalDate expenseDate;
-        while (true) {
-            try {
-                System.out.println("Nhập ngày chi: ");
-                expenseDate = LocalDate.parse(scanner.nextLine());
-                break;
-            } catch (Exception e) {
-                System.out.println("Vui lòng nhập ngày đúng định dạng yyyy-MM-dd");
-            }
-        }
-
-        Double expenseAmount;
-        while (true) {
-            try {
-                System.out.println("Nhập số tiền chi: ");
-                expenseAmount = Double.parseDouble(scanner.nextLine());
-                if (expenseAmount < 0) {
-                    System.out.println("Không được nhỏ hơn 0!");
-                    continue;
-                }
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số tiền hợp lệ!");
-            }
-        }
-
-        String expenseDescription;
-        while (true) {
-            System.out.println("Nhập mô tả thêm: ");
-            expenseDescription = scanner.nextLine();
-            if (expenseDescription.trim().isEmpty()) {
-                System.out.println("Không đc để trống!");
-            } else {
-                break;
-            }
-        }
-
-        return new Expense(expenseCode, expenseName, expenseDate, expenseAmount, expenseDescription);
     }
 }
