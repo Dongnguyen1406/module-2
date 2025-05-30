@@ -9,27 +9,20 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ExpenseRepo implements IExpenseRepo {
-    private static final String FILE_EXPENSE = "src/job_manager/data/expenxe.txt";
-
+    private static final String FILE_EXPENSE = "src/job_manager/data/expense.dat";
+    
     @Override
     public List<Expense> getAll() {
-        List<Expense> expenseList = new ArrayList<>();
-        List<String> lines = ReadAndWriteFile.readFileToBinary(FILE_EXPENSE);
-        for (String line : lines) {
-            String[] array = line.split(",");
-            expenseList.add(new Expense(Integer.parseInt(array[0]), array[1], LocalDate.parse(array[2]), Double.parseDouble(array[3]), array[4]));
-        }
-        return expenseList;
+        return ReadAndWriteFile.readFileToBinary(FILE_EXPENSE);
     }
 
     @Override
     public void add(Expense expense) {
-        List<Expense> expenseList = new ArrayList<>();
+        List<Expense> expenseList = ReadAndWriteFile.readFileToBinary(FILE_EXPENSE);
         expenseList.add(expense);
-        List<String> data = new ArrayList<>();
-        data.add(expense.toFileBinary());
-        ReadAndWriteFile.writeFileToBinary(FILE_EXPENSE, data, true);
+        ReadAndWriteFile.writeFileToBinary(FILE_EXPENSE, expenseList);
     }
+
 
     @Override
     public boolean isExist(int expenseCode) {
@@ -48,11 +41,7 @@ public class ExpenseRepo implements IExpenseRepo {
         for (int i = 0; i < expenses.size(); i++) {
             if (expenses.get(i).getExpenseCode() == expenseCode) {
                 expenses.remove(i);
-                List<String> data = new ArrayList<>();
-                for (Expense expense : expenses) {
-                    data.add(expense.toFileBinary());
-                }
-                ReadAndWriteFile.writeFileToBinary(FILE_EXPENSE, data, false);
+                ReadAndWriteFile.writeFileToBinary(FILE_EXPENSE, expenses);
                 return true;
             }
         }
@@ -67,11 +56,7 @@ public class ExpenseRepo implements IExpenseRepo {
                 expenses.set(i, expense);
             }
         }
-        List<String> data = new ArrayList<>();
-        for (Expense expense1 : expenses) {
-            data.add(expense1.toFileBinary());
-        }
-        ReadAndWriteFile.writeFileToBinary(FILE_EXPENSE, data, false);
+        ReadAndWriteFile.writeFileToBinary(FILE_EXPENSE, expenses);
     }
 
     @Override

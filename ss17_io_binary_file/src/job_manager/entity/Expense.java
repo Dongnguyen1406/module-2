@@ -68,12 +68,4 @@ public class Expense implements Serializable {
                 ", expenseDescription='" + expenseDescription + '\'' +
                 '}';
     }
-
-    public String toFileBinary() {
-        return expenseCode + "," +
-                expenseName + "," +
-                expenseDate + "," +
-                expenseAmount + "," +
-                expenseDescription;
-    }
 }
